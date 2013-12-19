@@ -89,7 +89,13 @@ angular.module('localization', [])
                     )[0];
 
                     // set the result
-                    result = entry.value;
+                    try {
+                        result = entry.value;
+                    } catch(err) {
+                        console.log("***ERROR FINDING LOCALIZE KEY*** when getting value for: " + value);
+                        result = "ERROR FINDING";
+                        throw err;
+                    }
                 }
                 // return the value to the call
                 return result;
